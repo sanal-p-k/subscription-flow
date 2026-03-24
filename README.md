@@ -11,7 +11,7 @@ Here is a complete walkthrough of the subscription process exactly as designed:
 
 | 4. Subscription Summary | 5. Live User Dashboard |
 | :---: | :---: |
-| ![Summary](./screenshots/summary.png) | ![Dashboard](./screenshots/final.png) |
+| ![Summary](./screenshots/summary.png) | ![Dashboard](./screenshots/profile2.png) |
 
 ## Tech Stack
 * **Frontend**: React (Vite), Tailwind CSS, React Router DOM, Axios
