@@ -83,7 +83,7 @@ export default function Dashboard() {
                     <div>
                         <h3 className="text-xs font-bold text-emerald-600 tracking-widest uppercase mb-1">Current Plan</h3>
                         <p className="text-2xl font-black">{subscription.plan_name}</p>
-                        <p className="text-emerald-700 font-medium">₹{subscription.final_price / 100}/month</p>
+                        <p className="text-emerald-700 font-medium">₹{(subscription.final_price / 100).toFixed(2)}/month</p>
                     </div>
                     <div className="bg-yellow-100 text-yellow-700 px-3 py-1.5 rounded-lg text-xs font-bold shadow-sm uppercase tracking-wider border border-yellow-200">
                         Active

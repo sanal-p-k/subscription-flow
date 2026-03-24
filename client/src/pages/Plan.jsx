@@ -67,7 +67,7 @@ export default function Plan() {
                             <p className="text-slate-500 text-sm">Full facility access</p>
                         </div>
                         <div className="text-right">
-                            <span className="text-2xl font-black text-indigo-600">₹{plan.price / 100}</span>
+                            <span className="text-2xl font-black text-indigo-600">₹{(plan.price / 100).toFixed(2)}</span>
                             <span className="text-slate-400 text-sm block">/month</span>
                         </div>
                     </button>

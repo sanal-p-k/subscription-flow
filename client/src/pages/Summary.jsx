@@ -76,7 +76,7 @@ export default function Summary() {
                         <p className="text-xs font-bold text-indigo-400 uppercase tracking-wider mb-1">Selected Plan</p>
                         <p className="text-lg font-bold text-indigo-900">{planName}</p>
                     </div>
-                    <p className="text-lg font-bold text-slate-900">₹{planPrice}</p>
+                    <p className="text-lg font-bold text-slate-900">₹{planPrice.toFixed(2)}</p>
                 </div>
 
                 {couponCode && (
@@ -85,13 +85,13 @@ export default function Summary() {
                             <span className="bg-emerald-100 text-emerald-700 px-2 py-1 rounded text-xs font-bold">{couponCode}</span>
                             <span className="text-sm text-slate-500">Discount ({discountPercent}%)</span>
                         </div>
-                        <p className="font-bold text-emerald-600">-₹{discountAmount}</p>
+                        <p className="font-bold text-emerald-600">-₹{discountAmount.toFixed(2)}</p>
                     </div>
                 )}
 
                 <div className="border-t border-slate-100 pt-6 flex justify-between items-end px-4">
                     <p className="text-slate-500 font-medium tracking-wide">Total Due</p>
-                    <p className="text-4xl font-black text-slate-900">₹{finalPrice}</p>
+                    <p className="text-4xl font-black text-slate-900">₹{finalPrice.toFixed(2)}</p>
                 </div>
 
                 <button

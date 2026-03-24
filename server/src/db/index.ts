@@ -24,7 +24,9 @@ export const initDb = () => {
 
       db.exec(`INSERT INTO Coupons (code, discount_percent, max_uses, current_uses, is_active) VALUES 
             ('WELCOME10', 10, 100, 0, 1),
-            ('NEWYEAR50', 50, 1000, 0, 1)
+            ('NEWYEAR50', 50, 1000, 0, 1),
+            ('SUMMER20', 20, 50, 0, 1),
+            ('FITNESS30', 30, 200, 0, 1)
           `);
       console.log('Inserted mock data for Plans and Coupons.');
     }

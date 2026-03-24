@@ -38,13 +38,14 @@ export default function Coupon() {
 
         try {
             const res = await api.post('/coupons/validate', { code: code.toUpperCase() });
-            if (res.data.valid) {
+            if (res.data.success && res.data.data?.valid) {
                 setStatus('valid');
-                setMessage(`Awesome! ${res.data.discount_percent}% discount applied.`);
+                setMessage(`Awesome! ${res.data.data.discount_percent}% discount applied.`);
                 localStorage.setItem('gym_coupon_code', code.toUpperCase());
-                localStorage.setItem('gym_coupon_discount', res.data.discount_percent);
+                localStorage.setItem('gym_coupon_discount', res.data.data.discount_percent);
 
-                setTimeout(() => navigate('/summary'), 1200);
+                // Navigate immediately to maintain speedy UX
+                setTimeout(() => navigate('/summary'), 1200);   // Keep brief delay to actually see the Success text!
             }
         } catch (err) {
             setStatus('invalid');
