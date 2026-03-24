@@ -5,6 +5,19 @@ export class SubscriptionRepository {
         return db.prepare('SELECT id, final_price, discount_amount FROM Subscriptions WHERE idempotency_key = ? LIMIT 1').get(key) as any;
     }
 
+    static findByUserId(userId: number) {
+        return db.prepare(`
+            SELECT s.*, p.name as plan_name, c.code as coupon_code,
+                   u.name as user_name, u.username, u.age, u.weight, u.height
+            FROM Subscriptions s
+            JOIN Plans p ON s.plan_id = p.id
+            JOIN Users u ON s.user_id = u.id
+            LEFT JOIN Coupons c ON s.coupon_id = c.id
+            WHERE s.user_id = ? AND s.status = 'active'
+            ORDER BY s.created_at DESC LIMIT 1
+        `).get(userId) as any;
+    }
+
     static create(sub: {
         userId: number,
         planId: number,

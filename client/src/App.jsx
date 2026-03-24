@@ -3,6 +3,7 @@ import Profile from './pages/Profile';
 import Plan from './pages/Plan';
 import Coupon from './pages/Coupon';
 import Summary from './pages/Summary';
+import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
@@ -13,13 +14,14 @@ function App() {
         </h1>
       </header>
 
-      <main className="max-w-md mx-auto py-10 px-4">
+      <main className="max-w-xl mx-auto py-10 px-4">
         <Routes>
           <Route path="/" element={<Navigate to="/profile" replace />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/plan" element={<Plan />} />
           <Route path="/coupon" element={<Coupon />} />
           <Route path="/summary" element={<Summary />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </main>
     </div>

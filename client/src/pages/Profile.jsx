@@ -40,7 +40,7 @@ export default function Profile() {
                 height: parseFloat(formData.height)
             };
 
-            const response = await api.post('/users/profile', payload);
+            const response = await api.post('/users', payload);
 
             if (response.data.success) {
                 // Save confirmed user_id for the checkout step
@@ -57,7 +57,9 @@ export default function Profile() {
     return (
         <div className="bg-white rounded-3xl shadow-xl shadow-indigo-100 p-8 border border-slate-100 animate-in fade-in slide-in-from-bottom-4 duration-500">
             <h2 className="text-2xl font-bold text-slate-900 mb-2">Create your Profile</h2>
-            <p className="text-slate-500 mb-6 text-sm">Tell us a bit about yourself to get started.</p>
+            <div className="flex justify-between items-center mb-6">
+                <p className="text-slate-500 text-sm">Tell us a bit about yourself to get started.</p>
+            </div>
 
             {error && <div className="p-4 mb-6 bg-red-50 text-red-600 rounded-xl text-sm font-medium">{error}</div>}
 
@@ -101,6 +103,20 @@ export default function Profile() {
                     {loading ? 'Continuing...' : 'Continue to Plans'}
                 </button>
             </form>
+
+            <div className="mt-8 border-t border-slate-100 pt-6 text-right">
+                <button
+                    type="button"
+                    onClick={() => {
+                        // Quick demo shortcut to bypass and view dashboard as user1
+                        localStorage.setItem('gym_user_id', '1');
+                        navigate('/dashboard');
+                    }}
+                    className="text-slate-400 hover:text-indigo-600 text-sm font-medium underline underline-offset-4 transition-colors"
+                >
+                    [Demo] Switch to Subscribed User
+                </button>
+            </div>
         </div>
     );
 }

@@ -1,8 +1,8 @@
-import { Request, Response } from 'express';
+import type { Request, Response } from 'express';
 import { db } from '../db/index.js';
 import { CouponRepository } from '../repositories/coupon.repo.js';
 
-export const validateCoupon = (req: Request, res: Response): void => {
+export const validateCoupon = (req: Request, res: Response, next: NextFunction): void => {
     try {
         const { code } = req.body;
 
@@ -25,21 +25,21 @@ export const validateCoupon = (req: Request, res: Response): void => {
 
         res.status(200).json({
             success: true,
-            valid: true,
-            discount_percent: coupon.discount_percent
+            data: {
+                valid: true,
+                discount_percent: coupon.discount_percent
+            }
         });
     } catch (error) {
-        console.error("Coupon validation error:", error);
-        res.status(500).json({ success: false, message: 'Server error validating coupon' });
+        next(error);
     }
 };
 
-export const getAvailableCoupons = (req: Request, res: Response): void => {
+export const getAvailableCoupons = (req: Request, res: Response, next: NextFunction): void => {
     try {
         const coupons = CouponRepository.findAvailable();
         res.status(200).json({ success: true, data: coupons });
     } catch (error) {
-        console.error("Coupon fetch error:", error);
-        res.status(500).json({ success: false, message: 'Server error fetching coupons' });
+        next(error);
     }
 };

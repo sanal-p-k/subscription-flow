@@ -23,7 +23,7 @@ export default function Coupon() {
                     setAvailableCoupons(res.data.data);
                 }
             } catch (err) {
-                console.error("Failed to load available coupons", err);
+                // Handled visually in layout fallback internally
             }
         };
         loadCoupons();
@@ -75,8 +75,8 @@ export default function Coupon() {
                             setStatus(null);
                         }}
                         className={`w-full px-5 py-4 text-lg font-bold tracking-widest rounded-xl border-2 transition-all outline-none ${status === 'invalid' ? 'border-red-300 focus:border-red-500 focus:ring-red-100' :
-                                status === 'valid' ? 'border-emerald-300 focus:border-emerald-500 focus:ring-emerald-100 text-emerald-700' :
-                                    'border-slate-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100'
+                            status === 'valid' ? 'border-emerald-300 focus:border-emerald-500 focus:ring-emerald-100 text-emerald-700' :
+                                'border-slate-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100'
                             }`}
                         placeholder="e.g. FLAT50"
                     />

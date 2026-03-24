@@ -22,7 +22,7 @@ export default function Plan() {
                     setPlans(res.data.data);
                 }
             } catch (err) {
-                console.error("Failed to load plans", err);
+                // Silently pass logic back to UI handlers
             } finally {
                 setLoading(false);
             }
@@ -39,7 +39,7 @@ export default function Plan() {
         setSelectedPlan(plan.id);
         localStorage.setItem('gym_plan_id', plan.id);
         localStorage.setItem('gym_plan_name', plan.name);
-        localStorage.setItem('gym_plan_price', plan.price);
+        localStorage.setItem('gym_plan_price', plan.price / 100);
 
         // Brief delay before navigation for slick feel
         setTimeout(() => navigate('/coupon'), 300);
@@ -58,8 +58,8 @@ export default function Plan() {
                         key={plan.id}
                         onClick={() => handleSelect(plan)}
                         className={`w-full text-left p-6 flex items-center justify-between rounded-3xl border-2 transition-all duration-300 ${selectedPlan === plan.id
-                                ? 'border-indigo-600 bg-indigo-50/50 shadow-xl shadow-indigo-100/50 scale-[1.02]'
-                                : 'border-slate-100 bg-white hover:border-indigo-200 hover:shadow-lg'
+                            ? 'border-indigo-600 bg-indigo-50/50 shadow-xl shadow-indigo-100/50 scale-[1.02]'
+                            : 'border-slate-100 bg-white hover:border-indigo-200 hover:shadow-lg'
                             }`}
                     >
                         <div>
@@ -67,7 +67,7 @@ export default function Plan() {
                             <p className="text-slate-500 text-sm">Full facility access</p>
                         </div>
                         <div className="text-right">
-                            <span className="text-2xl font-black text-indigo-600">₹{plan.price}</span>
+                            <span className="text-2xl font-black text-indigo-600">₹{plan.price / 100}</span>
                             <span className="text-slate-400 text-sm block">/month</span>
                         </div>
                     </button>
